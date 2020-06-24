@@ -1,0 +1,17 @@
+.calculadora {
+    width: 150px;
+}
+
+#display{
+    width: 150px;
+    height: 50px;
+    background-color: antiquewhite;
+}
+
+#lado-esquerdo{
+    display: inline;
+}
+
+#lado-direito {
+    display: inline;
+}
