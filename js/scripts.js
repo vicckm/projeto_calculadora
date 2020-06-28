@@ -1,12 +1,10 @@
-// display
+// pegando display
 
 let display = document.querySelector("#display");
+let acumulador = "";
+let resultado = "";
 
-let tecla = "";
-
-let historico = "";
-
-// números
+// pegando números
 
 let botaoNumeros = document.querySelectorAll("#lado-esquerdo > button");
 
@@ -21,10 +19,11 @@ let botaoSete = document.querySelector("#numeroSete");
 let botaoOito = document.querySelector("#numeroOito");
 let botaoNove = document.querySelector("#numeroNove");
 
-// operadores
+// pegando operadores
 
 let botaoOperadores = document.querySelectorAll("#lado-direito > button");
 
+let botaoApagar = document.querySelector("#apagar");
 let botaoSoma = document.querySelector("#soma");
 let botaoSubtracao = document.querySelector("#subtracao");
 let botaoDivisao = document.querySelector("#divisao");
@@ -32,54 +31,78 @@ let botaoMultiplicacao = document.querySelector("#multiplicacao");
 let botaoIgual = document.querySelector("#igual");
 let botaoDecimal = document.querySelector("#decimal");
 
+// apagar números
 
-// teclado numérico
-
-document.addEventListener("keyup", function(event){
-    if(event.key == 0){ 
-        mostrarTecla(event);
-    } else if(event.key == 1) { 
-        mostrarTecla(event);
-    } else if(event.key == 2) { 
-        mostrarTecla(event);
-    } else if(event.key == 3) { 
-        mostrarTecla(event);
-    } else if(event.key == 4) { 
-        mostrarTecla(event);
-    } else if(event.key == 5) { 
-        mostrarTecla(event);
-    } else if(event.key == 6) { 
-        mostrarTecla(event);
-    } else if(event.key == 7) { 
-        mostrarTecla(event);
-    } else if(event.key == 8) { 
-        mostrarTecla(event);
-    } else if(event.key == 9) { 
-        mostrarTecla(event);
-    } else if(event.key == "+") { 
-        mostrarTecla(event);
-    } else if(event.key == "-") { 
-        mostrarTecla(event);
-    } else if(event.key == "*") { 
-        mostrarTecla(event);
-    } else if(event.key == "/") { 
-        mostrarTecla(event);
-    } else if(event.key == ",") { 
-        mostrarTecla(event);
-    } else if(event.key == "Enter") {
-        console.log("teste")
-    }
+botaoApagar.addEventListener("click", function(){
+    limpaDisplay();
 })
 
-function mostrarTecla(event){
-    tecla = event.key;
-    if(tecla == ","){
-        display.innerText = ".";
-    } else {
-        display.innerText = tecla;
-    }
+function limpaDisplay(){
+    display.innerText = "";
 }
- 
+
+// eventos botões
+
+botaoNumeros.forEach(function(botao){
+    botao.addEventListener("click", function(){
+        acrescentaNoDisplay(botao); 
+    })
+})
+
+botaoDecimal.addEventListener("click", function(){
+    decimal = botaoDecimal.innerText;
+    display.innerText += decimal;
+})
+
+
+function acrescentaNoDisplay(botao){
+    display.innerText += botao.innerText;
+ }
+
+// cálculo
+
+botaoSoma.addEventListener("click", function(){
+    acumulador += display.innerText;
+    acumulador += " + "
+    display.innerText = ""; 
+})
+
+botaoSubtracao.addEventListener("click", function(){
+    acumulador += display.innerText;
+    acumulador += " - "
+    display.innerText = ""; 
+})
+
+botaoMultiplicacao.addEventListener("click", function(){
+    acumulador += display.innerText;
+    acumulador += " * "
+    display.innerText = ""; 
+})
+
+botaoDivisao.addEventListener("click", function(){
+    acumulador += display.innerText;
+    acumulador += " / "
+    display.innerText = ""; 
+})
+
+botaoIgual.addEventListener("click",function(){
+    mostraResultado();
+})
+
+function mostraResultado(){
+    acumulador += display.innerText;
+    resultado = eval(acumulador);
+    if(resultado == "Infinity"){
+        display.innerText = "Conta inválida"
+    } else {
+        display.innerText = resultado;  
+    }
+    acumulador = "";
+}
+
+
+
+
 
 
 
