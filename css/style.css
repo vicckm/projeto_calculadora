@@ -51,7 +51,7 @@ button {
 
 #lado-direito .botao {
     width: 25px;
-    border-radius: 20px;
+    border-radius: 30px;
     background: #666666;
     padding: 3px;
     border: none;
@@ -61,7 +61,7 @@ button {
 #lado-esquerdo button {
     width: 25px;
     color: white;
-    border-radius: 20px;
+    border-radius: 30px;
     background: #666666;
     padding: 3px;
     border: none;
@@ -69,7 +69,7 @@ button {
 
 #apagar {
     width: 55px;
-    border-radius: 20px;
+    border-radius: 30px;
     background: #ffa600;
     padding: 3px;
     border: none;
@@ -78,7 +78,7 @@ button {
 
 #igual {
     width: 25px;
-    border-radius: 20px;
+    border-radius: 30px;
     background: #ffa600;
     padding: 3px;
     border: none;
